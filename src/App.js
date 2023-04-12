@@ -19,12 +19,9 @@ class App extends Component {
     };
   }
 
-  applyPickedLanguage(pickedLanguage, oppositeLangIconId) {
+  applyPickedLanguage(pickedLanguage) {
     document.documentElement.lang = pickedLanguage;
-    var resumePath =
-      document.documentElement.lang === window.$primaryLanguage
-        ? `res_primaryLanguage.json`
-        : `res_secondaryLanguage.json`;
+    var resumePath = `res_primaryLanguage.json`
     this.loadResumeFromPath(resumePath);
   }
 
@@ -72,20 +69,12 @@ class App extends Component {
           <div
             onClick={() =>
               this.applyPickedLanguage(
-                window.$primaryLanguage,
-                window.$secondaryLanguageIconId
+                window.$primaryLanguage
               )
             }
             style={{ display: "inline" }}
-          >
-            <span
-              className="iconify language-icon mr-5"
-              data-icon="twemoji-flag-for-flag-united-kingdom"
-              data-inline="false"
-              id={window.$primaryLanguageIconId}
-            ></span>
+          > 
           </div>
-          
         </div>
         <About
           resumeBasicInfo={this.state.resumeData.basic_info}
